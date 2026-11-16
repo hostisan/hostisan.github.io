@@ -1,0 +1,16 @@
+# Site Settings
+name: "Hostisan"
+description: "Modern server control panel. Manage websites, databases, email and DNS from one place."
+url: "https://hostisan.com"
+defaultLocale: en
+analyticsProvider: none
+gtmId: ""
+umamiUrl: ""
+umamiId: ""
+mapLatitude: ""
+mapLongitude: ""
+orgName: "Hostisan"
+orgEmail: "hello@hostisan.com"
+socialLinks:
+  - name: "GitHub"
+    url: "https://github.com/hostisan/hostisan"

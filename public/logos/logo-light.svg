@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="32" viewBox="0 0 140 32">
+  <rect width="32" height="32" rx="6" fill="#059669"/>
+  <text x="16" y="21" text-anchor="middle" fill="white" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="18">H</text>
+  <text x="44" y="22" fill="#111827" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="20">Hostisan</text>
+</svg>

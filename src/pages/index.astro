@@ -1,0 +1,140 @@
+---
+import MarketingLayout from "../layouts/MarketingLayout.astro";
+import Hero from "../components/Hero.astro";
+import FAQ from "../components/FAQ.astro";
+import CTA from "../components/CTA.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import {
+  FeatureTabs,
+  Credibility,
+} from "../components/landing/index";
+import { t } from "../i18n/ui";
+
+const locale = (Astro.currentLocale || "en") as "en";
+const tabs = [
+  {
+    id: "websites",
+    icon: "globe",
+    heading: "Web Hosting",
+    description:
+      "Add domains, upload files, configure SSL. Nginx and Apache work together to serve your sites fast.",
+    points: [
+      "One-click Let's Encrypt certificates",
+      "File manager built in",
+      "PHP 8.5 with multiple versions",
+    ],
+    visual: "panel.example.com:8083\n├─ Web domains (12)\n├─ SSL certificates (12)\n└─ File Manager",
+  },
+  {
+    id: "email",
+    icon: "mail",
+    heading: "Email",
+    description:
+      "Run your own mail server with spam filtering, webmail, and proper DNS records out of the box.",
+    points: [
+      "Webmail via Roundcube",
+      "SpamAssassin filtering",
+      "DKIM signing enabled",
+    ],
+    visual: "Mail domains\n├─ example.com (5 accounts)\n├─ company.org (12 accounts)\n└─ webmail.example.com",
+  },
+  {
+    id: "databases",
+    icon: "database",
+    heading: "Databases",
+    description:
+      "Create MySQL and PostgreSQL databases. phpMyAdmin is included for browser-based management.",
+    points: [
+      "MariaDB 11.8 or MySQL 8",
+      "PostgreSQL support",
+      "phpMyAdmin included",
+    ],
+    visual: "Databases\n├─ user_wordpress (MySQL)\n├─ user_analytics (PostgreSQL)\n└─ phpMyAdmin",
+  },
+];
+---
+
+<MarketingLayout
+  title={t(locale, "nav.home")}
+  description="Modern server control panel for web hosting. Manage websites, databases, email and DNS."
+  locale={locale}
+  path="/"
+>
+  <Hero
+    variant="centered"
+    eyebrow="Open Source Control Panel"
+    headline={t(locale, "hero.title")}
+    subheadline={t(locale, "hero.subtitle")}
+    primaryCta={{ label: "Install now", href: "/docs/how-to/install" }}
+    secondaryCta={{ label: "View documentation", href: "/docs" }}
+    locale={locale}
+  />
+
+  <section class="container py-16">
+    <header class="section-head">
+      <p class="section-head__eyebrow">Everything in one place</p>
+      <h2 class="section-head__title">Manage your entire server from one panel</h2>
+      <p class="section-head__lead">
+        Web hosting, email, databases, DNS, backups, and security. All configured and ready to use.
+      </p>
+    </header>
+    <FeatureTabs client:visible tabs={tabs} />
+  </section>
+
+  <section class="container py-16">
+    <Credibility
+      stats={[
+        { value: "15min", label: "Install time" },
+        { value: "100%", label: "Open source" },
+        { value: "Free", label: "Forever" },
+      ]}
+      logos={[
+        { name: "Nginx", src: undefined },
+        { name: "MariaDB", src: undefined },
+        { name: "PHP", src: undefined },
+      ]}
+    />
+  </section>
+
+  <FAQ
+    title="Frequently asked questions"
+    items={[
+      {
+        question: "What operating systems are supported?",
+        answer:
+          "Ubuntu 24.04 LTS. Support for more distributions is planned.",
+      },
+      {
+        question: "Is Hostisan free?",
+        answer:
+          "Yes. Hostisan is free and open source. You can use it on as many servers as you want.",
+      },
+      {
+        question: "How do I update Hostisan?",
+        answer:
+          "Updates come through apt, the standard package manager. Run v-update-sys-hostisan-all or use the panel's update button.",
+      },
+      {
+        question: "Can I migrate from cPanel or Plesk?",
+        answer:
+          "Not automatically, but moving sites is straightforward. Export your files and databases, create the domains in Hostisan, and import.",
+      },
+      {
+        question: "What's the difference from HestiaCP?",
+        answer:
+          "Hostisan started as a fork of HestiaCP with a modernized UI and Go-based backend. It maintains compatibility with Hestia's scripts and templates.",
+      },
+    ]}
+  />
+
+  <CTA
+    eyebrow="Ready to start?"
+    title="Install Hostisan on your server"
+    content="One command, 15 minutes, and you're running a full hosting stack."
+    ctaText="Installation guide"
+    ctaHref="/docs/how-to/install"
+    secondaryText="View on GitHub"
+    secondaryHref="https://github.com/hostisan/hostisan"
+    locale={locale}
+  />
+</MarketingLayout>
